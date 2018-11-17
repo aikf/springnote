@@ -21,7 +21,7 @@ a.继承类 b.实现接口 c.注解 d.配置
 - Aspect:把增强应用到具体方法上面，这个过程称为切面
 
 **xml方式的通知类型**<br>
-通知类型 | 需要实现的接口 | 接口中的方法 | 执行时机
+| 通知类型 | 需要实现的接口 | 接口中的方法 | 执行时机 |
 :- | :- | :- | :-
 前置通知 | org.springframework.aop.MethodBeforeAdvice | before() | 目标方法执行前
 后置通知 | org.springframework.aop.AfterReturningAdvice | afterReturning() | 目标方法执行后
