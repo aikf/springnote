@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--配置扫描器-->
+    <context:component-scan base-package="com.xym.dao,com.xym.aop"/>
+    <!--开启注解对AOP的支持-->
+    <aop:aspectj-autoproxy/>
+    <!--配置数据库相关信息-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/xym?serverTimezone=Asia/Shanghai"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+    </bean>
+    <!--配置事务管理器transactionManager-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!--增加对事务的支持-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <bean id="studentDao" class="com.xym.dao.StudentDaoImpl"/>
+
+    <!--配置前置通知-->
+
+    <!--addStudent()所在类-->
+    <bean id="studentService" class="com.xym.service.StudentServiceImpl">
+        <property name="studentDao" ref="studentDao"/>
+    </bean>
+    <!--前置通知类-->
+    <!--=====连接线的一方=====-->
+    <bean id="logBefore" class="com.xym.aop.LogBefore"/>
+    <!--将addStudent()和通知进行关联-->
+    <aop:config>
+        <!--=====连接线的另一方=====-->
+        <aop:pointcut id="p1" expression="execution(public void com.xym.service.StudentServiceImpl.*(..))"/>
+        <!--=====连接线=====-->
+        <aop:advisor advice-ref="logBefore" pointcut-ref="p1" />
+    </aop:config>
+
+    <!--后置通知-->
+    <bean id="logAfter" class="com.xym.aop.LogAfter"/>
+    <aop:config>
+        <aop:pointcut id="p2" expression="execution(public void com.xym.service.StudentServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="logAfter" pointcut-ref="p2" />
+    </aop:config>
+
+    <!--异常通知-->
+    <bean id="logException" class="com.xym.aop.LogException"/>
+    <aop:config>
+        <aop:pointcut id="p3" expression="execution(public void com.xym.service.StudentServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="logException" pointcut-ref="p3" />
+    </aop:config>
+
+    <!--环绕通知-->
+    <bean id="logAround" class="com.xym.aop.LogAround"/>
+    <aop:config>
+        <aop:pointcut id="p4" expression="execution(public void com.xym.service.StudentServiceImpl.*(..))"/>
+        <aop:advisor advice-ref="logAround" pointcut-ref="p4" />
+    </aop:config>
+
+    <!--Schema方式-->
+    <bean id="logSchema" class="com.xym.aop.LogSchema"/>
+    <aop:config>
+        <aop:pointcut id="s1" expression="execution(public * com.xym.service.StudentServiceImpl.*(..))"/>
+        <aop:aspect ref="logSchema">
+            <aop:before method="before" pointcut-ref="s1"/>
+            <aop:after-returning method="afterReturning" pointcut-ref="s1" returning="returnValue"/>
+            <aop:after-throwing method="whenException" pointcut-ref="s1" throwing="e"/>
+            <aop:around method="around" pointcut-ref="s1"/>
+        </aop:aspect>
+    </aop:config>
+
+
+    <!--该文件产生的所有对象，被放入spring ioc 容器-->
+    <!--id:唯一标识符 class：指定类型-->
+    <bean id="student" class="com.xym.entities.Student">
+        <property name="stuNo" value="1"/>
+        <property name="stuName" value="zs"/>
+        <property name="stuAge" value="23" />
+    </bean>
+    <bean id="javaCourse" class="com.xym.newinstance.JavaCourse"/>
+    <bean id="htmlCourse" class="com.xym.newinstance.HtmlCourse"/>
+
+    <bean id="teacher" class="com.xym.entities.Teacher" p:name="ww" p:age="25">
+        <!--通过set方式赋值
+        <property name="name" value="zs"/>
+        <property name="age" value="23"/>
+        通过构造器赋值
+        <constructor-arg value="ls" type="java.lang.String" index="0" name="name"/>
+        <constructor-arg value="24" type="int" index="1" name="age"/>-->
+
+    </bean>
+    <bean id="course" class="com.xym.entities.Course" p:courseName="html" p:courseHour="50" p:teacher-ref="teacher">
+        <!--相当于调用course.setCourseName("java")
+        <property name="courseName" value="java"/>
+        <property name="courseHour" value="200"/>
+        将teacher对象注入course对象中 即调用setTeacher(teacher)
+        <property name="teacher" ref="teacher"/>-->
+        <!--构造器注入
+        <constructor-arg value="c"/>
+        <constructor-arg value="100"/>
+        <constructor-arg ref="teacher"/>-->
+    </bean>
+
+    <bean id="collectionDemo" class="com.xym.entities.AllCollectionType">
+        <property name="fruitList">
+            <list>
+                <value>apple-list</value>
+                <value>orange-list</value>
+                <value>banana-list</value>
+            </list>
+        </property>
+        <property name="fruitArray">
+            <array>
+                <value>apple-array</value>
+                <value>orange-array</value>
+                <value>banana-array</value>
+            </array>
+        </property>
+        <property name="fruitSet">
+            <set>
+                <value>apple-set</value>
+                <value>orange-set</value>
+                <value>banana-set</value>
+            </set>
+        </property>
+        <property name="fruitMap">
+            <map>
+                <entry>
+                    <key>
+                        <value>apple</value>
+                    </key>
+                    <value>apple-map</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>orange</value>
+                    </key>
+                    <value>orange-map</value>
+                </entry>
+                <entry>
+                    <key>
+                        <value>banana</value>
+                    </key>
+                    <value>banana-map</value>
+                </entry>
+            </map>
+        </property>
+        <property name="fruitProps">
+            <props>
+                <prop key="a">apple-prop</prop>
+                <prop key="o">orange-prop</prop>
+                <prop key="b">banana-prop</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="mysql-connector-java-8.0.12">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/mysql-connector-java-8.0.12.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-pool2-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/commons-dbcp2-2.5.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/aopalliance-.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-jdbc-5.0.10.RELEASE.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/spring-tx-5.0.10.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/Downloads/开发包/commons-dbcp2-2.5.0/commons-dbcp2-2.5.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
