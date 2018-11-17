@@ -1,10 +1,10 @@
 ## 八、基于Schema形式的AOP实现
-基本Schema配置(XML)类似于实现接口的方式
-接口方式通知：需要类实现接口如：`public class LogAfter implements AfterReturningAdvice{}`
-Schema方式通知：a.编写一个普通类`public class LogAfter{}`b.将该类通过配置转为一个通知
-要获取目标对象信息:
-注解、Schema:JoinPoint
-接口：Method method, Object[] args, Object target
+基本Schema配置(XML)类似于实现接口的方式<br>
+接口方式通知：需要类实现接口如：`public class LogAfter implements AfterReturningAdvice{}`<br>
+Schema方式通知：a.编写一个普通类`public class LogAfter{}`b.将该类通过配置转为一个通知<br>
+要获取目标对象信息:<br>
+注解、Schema:JoinPoint<br>
+接口：Method method, Object[] args, Object target<br>
 *LogSchema.java*
 ```java
 package com.xym.aop;

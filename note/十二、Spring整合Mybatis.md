@@ -1,5 +1,5 @@
 ## 十二、Spring整合Mybatis
-单独使用：conf.xml --> SqlSessionFactory
+单独使用：conf.xml --> SqlSessionFactory<br>
 整合使用：需要通过Spring管理SqlSessionFactory,因此产生SqlSessionFactory所需的数据库信息不再放入conf.xml，而是放入Spring中
 
 #### 1. 导入相关jar包
@@ -91,8 +91,8 @@ public interface StudentMapper {
 ```
 #### 6. 使用Sping-Mybatis整合产物开发程序
 
-通过Spring产生Mybatis最终操作需要的动态Mapper对象(StudentMapper)
-Spring产生动态Mapper对象有三种方法
+通过Spring产生Mybatis最终操作需要的动态Mapper对象(StudentMapper)<br>
+Spring产生动态Mapper对象有三种方法<br>
 1. DAO层实现类，继承SqlSessionDaoSupport类
 
 *StudentDao.java*

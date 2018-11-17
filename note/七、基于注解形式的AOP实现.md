@@ -1,15 +1,15 @@
 ## 七、基于注解形式的AOP实现
 1. 导入jar包(与实现接口的方式相同)
 2. 配置
-将业务类、通知 纳入SpringIOC容器
-使用注解形式将对象增加到IOC容器需开启注解扫描器`<context:component-scan base-package="com.xym.dao,com.xym.aop"/>`
-扫描器会将指定包中@Component@Servie@Respository@Controller修饰的类产生的对象加入IOC容器
-@Aspect不需要加入扫描器，只需在配置文件中开启即可
+将业务类、通知 纳入SpringIOC容器<br>
+使用注解形式将对象增加到IOC容器需开启注解扫描器`<context:component-scan base-package="com.xym.dao,com.xym.aop"/>`<br>
+扫描器会将指定包中@Component@Servie@Respository@Controller修饰的类产生的对象加入IOC容器<br>
+@Aspect不需要加入扫描器，只需在配置文件中开启即可<br>
 开启注解对AOP的支持`<aop:aspectj-autoproxy/>`
 3. 编写代码
 
-通过注解形式实现的AOP，如果想获取目标对象的一些参数，则需要使用一个对象：JointPoint
-注解形式的返回值：需要在注解上声明返回值的参数名
+通过注解形式实现的AOP，如果想获取目标对象的一些参数，则需要使用一个对象：JointPoint<br>
+注解形式的返回值：需要在注解上声明返回值的参数名<br>
 *LogAspectAnnotation.java*
 ```java
 package com.xym.aop;

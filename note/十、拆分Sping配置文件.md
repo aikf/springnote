@@ -1,5 +1,5 @@
 ## 十、拆分Sping配置文件
-普通JAVA项目可自定义多个applicationContext.xml，具体要哪个就new哪个
+普通JAVA项目可自定义多个applicationContext.xml，具体要哪个就new哪个<br>
 Web项目：根据什么拆分？<br>
 ![cf58feed.png](attachments/cf58feed.png)<br>
 - 三层结构拆分

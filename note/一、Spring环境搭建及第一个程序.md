@@ -5,7 +5,7 @@
 2. 新建applicationContext.xml配置文件
 3. 开发spring入门程序(IOC)
 目录结构<br>
-![45ca9aa3.png](attachments/45ca9aa3.png)
+![45ca9aa3.png](attachments/45ca9aa3.png)<br>
 *applicationContext.xml*
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

@@ -1,7 +1,7 @@
 ## 十一、Spring整合WEB项目
-**启动时**：Spring会给Servlet的service属性通过DI注入，并纳入IOC容器
-**请求Servlet时**：请求的是tomcat服务器，这个Servlet由tomcat生成，此时的Servlet的service属于并未赋值
-两个Servlet分别为tomcat服务器与SpringIOC生成，放在各自的容器内
+**启动时**：Spring会给Servlet的service属性通过DI注入，并纳入IOC容器<br>
+**请求Servlet时**：请求的是tomcat服务器，这个Servlet由tomcat生成，此时的Servlet的service属于并未赋值<br>
+两个Servlet分别为tomcat服务器与SpringIOC生成，放在各自的容器内<br>
 请求tomcat生成的servlet需要通过init()将ioc中的service引入
 *目录结构*<br>
 ![4e175f46.png](attachments/4e175f46.png)<br>

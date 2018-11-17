@@ -1,7 +1,7 @@
 ## 六、AOP、execution表达式、通知
 
-AOP:面向方面编程
-一个普通的类  --> 有特定功能的类
+AOP:面向方面编程<br>
+一个普通的类  --> 有特定功能的类<br>
 a.继承类 b.实现接口 c.注解 d.配置
 #### AOP操作术语
 - Joinpoint(连接点):指那些被拦截到的点，在Spring中，这些点指的是方法，因为Spring只支持方法类型的连接点
@@ -20,7 +20,7 @@ a.继承类 b.实现接口 c.注解 d.配置
   - 环绕通知：在方法前后执行
 - Aspect:把增强应用到具体方法上面，这个过程称为切面
 
-**xml方式的通知类型**
+**xml方式的通知类型**<br>
 通知类型 | 需要实现的接口 | 接口中的方法 | 执行时机
 :- | :- | :- | :-
 前置通知 | org.springframework.aop.MethodBeforeAdvice | before() | 目标方法执行前
@@ -35,9 +35,9 @@ aspectjweaver.jar
 
 2. 编写业务类、通知类
 
-每当执行add()之前 自动执行一个方法
-add();  业务方法(IStudentService.java中的addStudent())
-log();  自动执行的通知，即AOP前置通知
+每当执行add()之前 自动执行一个方法<br>
+add();  业务方法(IStudentService.java中的addStudent())<br>
+log();  自动执行的通知，即AOP前置通知<br>
 *LogBefore.java*
 ```java
 package com.xym.aop;
@@ -94,11 +94,11 @@ public class LogAfter implements AfterReturningAdvice {
     </aop:config>
 ```
 #### 异常通知
-根据异常通知的接口定义可以发现，异常通知的实现类必须编写以下方法
-```public void afterThrowing([Method, args, target], ThrowableSubclass)```
-该方法有两种情况
-a. public void afterThrowing(Method, args, target, ThrowableSubclass)
-b. public void afterThrowing(ThrowableSubclass)
+根据异常通知的接口定义可以发现，异常通知的实现类必须编写以下方法<br>
+```public void afterThrowing([Method, args, target], ThrowableSubclass)```<br>
+该方法有两种情况<br>
+a. public void afterThrowing(Method, args, target, ThrowableSubclass)<br>
+b. public void afterThrowing(ThrowableSubclass)<br>
 *LogException.java*
 ```java
 public class LogException implements ThrowsAdvice {
@@ -118,9 +118,9 @@ public class LogException implements ThrowsAdvice {
     </aop:config>
 ```
 #### 环绕通知
-在目标方法的前后、异常发生时、最终等各个地方都可以进行的通知，最强大的一个通知，可以获得目标方法的全部控制权(目标方法是否执行、执行前、执行后、参数、返回值等)
-在使用环绕通知时，目标方法的一切信息都可以通过invocation参数获取
-环绕通知底层是通过拦截器实现的
+在目标方法的前后、异常发生时、最终等各个地方都可以进行的通知，最强大的一个通知，可以获得目标方法的全部控制权(目标方法是否执行、执行前、执行后、参数、返回值等)<br>
+在使用环绕通知时，目标方法的一切信息都可以通过invocation参数获取<br>
+环绕通知底层是通过拦截器实现的<br>
 *LogAround.java*
 ```java
 public class LogAround implements MethodInterceptor {

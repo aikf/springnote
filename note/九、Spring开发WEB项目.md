@@ -1,8 +1,8 @@
 ## 九、Spring开发WEB项目
-Web项目如何初始化SpirngIOC容器：
-当服务启动时(tomcat)，通过监听器将SpringIOC容器初始化一次，该监听器spring-web.jar已提供
-用Spring开发Web项目需要7个jar包:spring(java项目6个)+spring-web.jar
-web项目启动时会自动加载web.xml，因此需要在web.xml中加载监听器(IOC容器初始化)
+Web项目如何初始化SpirngIOC容器：<br>
+当服务启动时(tomcat)，通过监听器将SpringIOC容器初始化一次，该监听器spring-web.jar已提供<br>
+用Spring开发Web项目需要7个jar包:spring(java项目6个)+spring-web.jar<br>
+web项目启动时会自动加载web.xml，因此需要在web.xml中加载监听器(IOC容器初始化)<br>
 初始化IOC容器(applicationContext.xml)
 - 通过context-param告诉监听器此容器的位置
 - 默认约定的位置并使用约定文件名/WEB-INF/applicationContext.xml
