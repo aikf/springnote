@@ -4,8 +4,8 @@
 
 #### 1. 导入相关jar包
 
-*目录结构及jar包*
-![0926b96b.png](attachments/0926b96b.png)
+*目录结构及jar包*<br>
+![0926b96b.png](attachments/0926b96b.png)<br>
 #### 2. 创建实体类和表
 
 *Student.java*
@@ -17,8 +17,8 @@ public class Student {
     //get set toString
 }
 ```
-*表结构*
-![3c852e34.png](attachments/3c852e34.png)
+*表结构*<br>
+![3c852e34.png](attachments/3c852e34.png)<br>
 #### 3. 编辑Mybatis配置文件mybatis-config.xml
 
 ```xml

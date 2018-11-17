@@ -7,8 +7,9 @@ web项目启动时会自动加载web.xml，因此需要在web.xml中加载监听
 - 通过context-param告诉监听器此容器的位置
 - 默认约定的位置并使用约定文件名/WEB-INF/applicationContext.xml
 
-*目录结构*
+*目录结构*<br>
 ![935b257e.png](attachments/935b257e.png)
+
 *web.xml*
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

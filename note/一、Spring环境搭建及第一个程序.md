@@ -1,10 +1,10 @@
 ## 一、Spring环境搭建及第一个程序
 ### 搭建Spring环境
-1. 在IDEA中新建普通java项目，导入jar包(5+1)
+1. 在IDEA中新建普通java项目，导入jar包(5+1)<br>
 ![774ef008.png](attachments/774ef008.png)
 2. 新建applicationContext.xml配置文件
 3. 开发spring入门程序(IOC)
-目录结构
+目录结构<br>
 ![45ca9aa3.png](attachments/45ca9aa3.png)
 *applicationContext.xml*
 ```xml
